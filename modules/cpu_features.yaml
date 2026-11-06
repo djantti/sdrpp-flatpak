@@ -1,0 +1,15 @@
+name: cpu_features
+buildsystem: cmake
+config-opts:
+  - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+  - -DBUILD_TESTING=Off
+sources:
+  - type: archive
+    url: https://github.com/google/cpu_features/archive/refs/tags/v0.11.0.tar.gz
+    sha256: ab2463f2d38fcaff1ce806be8e4c91333449931f5e02009d543b2569a3fa471a
+cleanup:
+  - /bin
+  - /include
+  - /lib/cmake
+post-install:
+  - install -Dm644 -t ${FLATPAK_DEST}/share/licenses/cpu_features LICENSE

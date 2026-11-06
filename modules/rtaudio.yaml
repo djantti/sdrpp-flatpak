@@ -1,0 +1,14 @@
+name: rtaudio
+buildsystem: cmake
+config-opts:
+  - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+sources:
+  - type: git
+    url: https://github.com/thestk/rtaudio.git
+    commit: 8ce4f2635a3b8f52687ec34625c8027e18024fe9
+cleanup:
+  - /include
+  - /share
+  - /lib/pkgconfig
+post-install:
+  - install -Dm644 -t ${FLATPAK_DEST}/share/licenses/rtaudio LICENSE

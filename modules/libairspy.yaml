@@ -1,0 +1,14 @@
+name: libairspy
+buildsystem: cmake-ninja
+config-opts:
+  - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+sources:
+  - type: git
+    url: https://github.com/airspy/airspyone_host.git
+    commit: fc61ab6be57ed61f0e2bdd9c6dfae74cacef57d0
+cleanup:
+  - /bin
+  - /include
+  - /lib/pkgconfig
+post-install:
+  - install -Dm644 -t ${FLATPAK_DEST}/share/licenses/libairspy libairspy/LICENSE.md

@@ -1,0 +1,15 @@
+name: glfw
+buildsystem: cmake
+config-opts:
+  - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+sources:
+  - type: archive
+    url: https://github.com/glfw/glfw/archive/refs/tags/3.5.1.tar.gz
+    sha256: 5234f4f29473e9a06bc7847d8371858dd135d38466eeeaa652fdc9f8f9ff0c20
+cleanup:
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
+  - /share/doc
+post-install:
+  - install -Dm644 -t ${FLATPAK_DEST}/share/licenses/glfw LICENSE.md

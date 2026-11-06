@@ -1,0 +1,47 @@
+app-id: org.sdrpp.SDRPlusPlus
+runtime: org.freedesktop.Platform
+runtime-version: "26.08"
+sdk: org.freedesktop.Sdk
+command: sdrpp
+rename-desktop-file: sdrpp.desktop
+finish-args:
+  - --socket=x11
+  - --socket=pulseaudio
+  - --device=dri
+  - --device=usb
+  - --share=network
+  - --share=ipc
+  - --filesystem=xdg-run/pipewire-0
+  - --system-talk-name=org.freedesktop.RealtimeKit1
+  - --persist=.config/sdrpp
+cleanup:
+  - "*.a"
+  - "*.la"
+modules:
+  - modules/glfw.yaml
+  - modules/cpu_features.yaml
+  - modules/volk.yaml
+  - modules/libairspy.yaml
+  - modules/libairspyhf.yaml
+  - modules/rtaudio.yaml
+  - modules/libhackrf.yaml
+  - modules/libaio.yaml
+  - modules/libiio.yaml
+  - modules/libad9361-iio.yaml
+  - modules/librtlsdr.yaml
+  - name: sdrpp
+    buildsystem: cmake
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    post-install:
+      - install -Dm644 org.sdrpp.SDRPlusPlus.metainfo.xml /app/share/metainfo/org.sdrpp.SDRPlusPlus.metainfo.xml
+      - install -Dm644 /app/share/sdrpp/icons/sdrpp.png /app/share/icons/hicolor/128x128/apps/org.sdrpp.SDRPlusPlus.png
+      - desktop-file-edit --set-key="Icon" --set-value="org.sdrpp.SDRPlusPlus" ${FLATPAK_DEST}/share/applications/sdrpp.desktop
+    sources:
+      - type: git
+        url: https://github.com/AlexandreRouma/SDRPlusPlus.git
+        commit: f10fb98af8b80de01de94e60c17608e4281e2515
+      - type: patch
+        path: patches/stdc++fs-remove.patch
+      - type: file
+        path: org.sdrpp.SDRPlusPlus.metainfo.xml

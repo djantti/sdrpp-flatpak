@@ -1,0 +1,14 @@
+name: libad9361-iio
+buildsystem: cmake
+config-opts:
+  - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+sources:
+  - type: git
+    url: https://github.com/analogdevicesinc/libad9361-iio.git
+    commit: b60f1770bf8466a90c09d63f127d7f0835c105cc
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /share/doc
+post-install:
+  - install -Dm644 -t ${FLATPAK_DEST}/share/licenses/libad9361-iio LICENSE

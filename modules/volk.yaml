@@ -1,0 +1,17 @@
+name: volk
+buildsystem: cmake
+config-opts:
+  - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+  - -DENABLE_TESTING=Off
+  - -DENABLE_MODTOOL=Off
+sources:
+  - type: git
+    url: https://github.com/gnuradio/volk.git
+    commit: 061550b3ae0eb4743c122d50b458c24db3e0935c
+cleanup:
+  - /bin
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
+post-install:
+  - install -Dm644 -t ${FLATPAK_DEST}/share/licenses/volk COPYING

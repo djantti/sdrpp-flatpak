@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.sdrpp.SDRPlusPlus</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <name>SDR++</name>
+  <developer_name>Alexandre Rouma</developer_name>
+  <summary>The bloat-free SDR software</summary>
+  <description>
+    <p>
+      SDR++ is a cross-platform and open source SDR software with the aim of being bloat free and simple to use.
+    </p>
+    <p>
+      Features:
+    </p>
+    <ul>
+      <li>Multi VFO</li>
+      <li>Wide hardware support (both through SoapySDR and dedicated modules)</li>
+      <li>SIMD accelerated DSP</li>
+      <li>Cross-platform (Windows, Linux, MacOS and BSD)</li>
+      <li>Full waterfall update when possible. Makes browsing signals easier and more pleasant.</li>
+      <li>Modular design (easily write your own plugins)</li>
+    </ul>
+  </description>
+  <launchable type="desktop-id">sdrpp.desktop</launchable>
+  <content_rating type="oars-1.1" />
+  <url type="homepage">https://www.sdrpp.org</url>
+  <url type="bugtracker">https://github.com/AlexandreRouma/SDRPlusPlus/issues</url>
+  <releases>
+    <release version="1.3.2" date="2026-10-22" />
+  </releases>
+</component>

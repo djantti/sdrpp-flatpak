@@ -1,0 +1,16 @@
+name: libhackrf
+buildsystem: cmake
+subdir: host
+config-opts:
+  - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+sources:
+  - type: archive
+    url: https://github.com/greatscottgadgets/hackrf/archive/refs/tags/v2026.01.3.tar.gz
+    sha256: 48238f3a21189fa8cbe67838584cc045b9e5433767db8c9c30c1da02a1489f2c
+cleanup:
+  - /bin
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
+post-install:
+  - install -Dm644 -t ${FLATPAK_DEST}/share/licenses/libhackrf ../COPYING

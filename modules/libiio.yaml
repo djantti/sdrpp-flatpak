@@ -1,0 +1,16 @@
+name: libiio
+buildsystem: cmake
+config-opts:
+  - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+  - -DINSTALL_UDEV_RULE=Off
+sources:
+  - type: archive
+    url: https://github.com/analogdevicesinc/libiio/archive/refs/tags/v0.26.tar.gz
+    sha256: fb445fb860ef1248759f45d4273a4eff360534480ec87af64c6b8db3b99be7e5
+cleanup:
+  - /bin
+  - /sbin
+  - /include
+  - /lib/pkgconfig
+post-install:
+  - install -Dm644 -t ${FLATPAK_DEST}/share/licenses/libiio COPYING.txt
