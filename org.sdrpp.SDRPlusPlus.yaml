@@ -40,7 +40,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/AlexandreRouma/SDRPlusPlus.git
-        commit: f10fb98af8b80de01de94e60c17608e4281e2515
+        branch: master
       - type: patch
         path: patches/stdc++fs-remove.patch
       - type: file
